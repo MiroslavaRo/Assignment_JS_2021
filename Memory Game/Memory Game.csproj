@@ -6,7 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\imgs\cats\" />
+    <Folder Include="wwwroot\imgs\dogs\" />
+    <Folder Include="wwwroot\imgs\dinosaurs\" />
   </ItemGroup>
 
 </Project>
