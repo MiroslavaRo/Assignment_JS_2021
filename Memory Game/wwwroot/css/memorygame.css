@@ -75,8 +75,7 @@ h1 {
             animation-duration: .75s;
         }
         
-       
-
+     
         .deck .card.disabled {
             pointer-events: none;
             opacity: 0.9;
@@ -101,52 +100,10 @@ h1 {
 }
 
 
-
-
-
-
-
-
 /*
- * Styles for the Score Panel
- */
+    Style for dropdowns
+*/
 
-
-.score-panel {
-    text-align: left;
-    margin-bottom: 10px;
-}
-
-    .score-panel .stars {
-        margin: 0;
-        padding: 0;
-        display: inline-block;
-        margin: 0 5px 0 0;
-    }
-
-        .score-panel .stars li {
-            list-style: none;
-            display: inline-block;
-        }
-
-    .score-panel .restart {
-        float: right;
-        cursor: pointer;
-    }
-
-.fa-star {
-    color: #FFD700;
-}
-
-.timer {
-    display: inline-block;
-    margin: 0 1rem;
-}
-
-
-/*
- * Styles for congratulations modal
- */
 
 
 .overlay {
@@ -210,6 +167,174 @@ h1 {
     opacity: 100 !important;
 }
 
+#starRating li {
+    display: inline-block;
+}
+
+#play{
+    background-color: #141214;
+    padding: 0.7rem 1rem;
+    font-size: 1.1rem;
+    display: block;
+    margin: 0 auto;
+    width: 50%;
+    font-family: 'Gloria Hallelujah', cursive;
+    color: #ffffff;
+    border-radius: 5px;
+}
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    margin: 10px 300px;
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    font-family:Arial;
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 36px rgba(46, 61, 73, 0.5);
+    z-index: 1;
+}
+
+    .dropdown-content div {
+        cursor:pointer;
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        .dropdown-content div:hover {
+            background-color: #f1f1f1;
+        }
+        .dropdown-content div.selected {
+            background-color: #483c3c;
+            color:#ffffff;
+        }
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+}
+
+
+
+/*
+ * Styles for the Score Panel
+ */
+
+
+.score-panel {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+    .score-panel .stars {
+        margin: 0;
+        padding: 0;
+        display: inline-block;
+        margin: 0 5px 0 0;
+    }
+
+        .score-panel .stars li {
+            list-style: none;
+            display: inline-block;
+        }
+
+    .score-panel .restart {
+        float: right;
+        cursor: pointer;
+    }
+
+.fa-star {
+    color: #FFD700;
+}
+
+.timer {
+    display: inline-block;
+    margin: 0 1rem;
+}
+
+
+/*
+ * Styles for congratulations modal
+ */
+/*
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+    .overlay:target {
+        visibility: visible;
+        opacity: 1;
+    }
+
+.popup {
+    margin: 70px auto;
+    padding: 20px;
+    background: #ffffff;
+    border-radius: 5px;
+    width: 85%;
+    position: relative;
+    transition: all 5s ease-in-out;
+    font-family: 'Gloria Hallelujah', cursive;
+}
+
+    .popup h2 {
+        margin-top: 0;
+        color: #333;
+        font-family: Tahoma, Arial, sans-serif;
+    }
+
+    .popup .close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        transition: all 200ms;
+        font-size: 30px;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+
+        .popup .close:hover {
+            color: #E5F720;
+        }
+
+    .popup .content-1,
+    .content-2 {
+        max-height: 30%;
+        overflow: auto;
+        text-align: center;
+    }
+
+.show {
+    visibility: visible !important;
+    opacity: 100 !important;
+}
+    */
 #starRating li {
     display: inline-block;
 }

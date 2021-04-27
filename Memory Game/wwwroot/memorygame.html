@@ -14,10 +14,37 @@
 </head>
 <body>
     <div class="container">
+        <div id="popup0" class="overlay">
+            <div class="popup">
+                <h2>Welcome to Memory Game!</h2>
+                <div class="content-1">
+                    Chose your playground theme:
+
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Themes</button>
+                    <div class="dropdown-content">
+                        <div class="option selected" id="cats">Cats</div>
+                        <div class="option" id="dogs">Dogs</div>
+                        <div class="option" id="dinosaurs">Dinosaurs</div>
+                    </div>
+                </div>
+                <br />
+                <div class="content-2">
+                    <label for="player1">Player 1:</label>
+                    <input type="text" id="player1" name="player1" value="Player1" />
+                    <br /><br />
+                    <label for="player2">Player 2:</label>
+                    <input type="text" id="player2" name="player2" value="Player2" />
+                </div>
+            </div>
+            <button id="play" onclick="startGame()">
+                Play
+            </button>
+        </div>
         <header>
             <h1>Memory Game</h1>
         </header>
-
         <section class="score-panel">
             <ul class="stars">
                 <li><i class="fa fa-star"></i></li>
@@ -34,74 +61,76 @@
                 <i class="fa fa-repeat"></i>
             </div>
         </section>
+        <div class="players">
 
+        </div>
         <section class="deck" id="card-deck">
 
             <div class="card" data-framework="img1">
-                <img class="face" src="imgs/cats/img1.jpg" />
+                <img class="face" src="imgs/cats/img1.jpg" alt="img1" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img1">
-                <img class="face" src="imgs/cats/img1.jpg" />
+                <img class="face" src="imgs/cats/img1.jpg" alt="img1" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img2">
-                <img class="face" src="imgs/cats/img2.jpg" />
+                <img class="face" src="imgs/cats/img2.jpg" alt="img2" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img2">
-                <img class="face" src="imgs/cats/img2.jpg" />
+                <img class="face" src="imgs/cats/img2.jpg" alt="img2" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img3">
-                <img class="face" src="imgs/cats/img3.jpg" />
+                <img class="face" src="imgs/cats/img3.jpg" alt="img3" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img3">
-                <img class="face" src="imgs/cats/img3.jpg" />
+                <img class="face" src="imgs/cats/img3.jpg" alt="img3" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img4">
-                <img class="face" src="imgs/cats/img4.jpg" />
+                <img class="face" src="imgs/cats/img4.jpg" alt="img4" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img4">
-                <img class="face" src="imgs/cats/img4.jpg" />
+                <img class="face" src="imgs/cats/img4.jpg" alt="img4" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img5">
-                <img class="face" src="imgs/cats/img5.jpg" />
+                <img class="face" src="imgs/cats/img5.jpg" alt="img5" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img5">
-                <img class="face" src="imgs/cats/img5.jpg" />
+                <img class="face" src="imgs/cats/img5.jpg" alt="img5" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img6">
-                <img class="face" src="imgs/cats/img6.jpg" />
+                <img class="face" src="imgs/cats/img6.jpg" alt="img6" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img6">
-                <img class="face" src="imgs/cats/img6.jpg" />
+                <img class="face" src="imgs/cats/img6.jpg" alt="img6" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img7">
-                <img class="face" src="imgs/cats/img7.jpg" />
+                <img class="face" src="imgs/cats/img7.jpg" alt="img7" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img7">
-                <img class="face" src="imgs/cats/img7.jpg" />
+                <img class="face" src="imgs/cats/img7.jpg" alt="img7" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img8">
-                <img class="face" src="imgs/cats/img8.jpg" />
+                <img class="face" src="imgs/cats/img8.jpg" alt="img8" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
             <div class="card" data-framework="img8">
-                <img class="face" src="imgs/cats/img8.jpg" />
+                <img class="face" src="imgs/cats/img8.jpg" alt="img8" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
-          
+
         </section>
 
         <div id="popup1" class="overlay">

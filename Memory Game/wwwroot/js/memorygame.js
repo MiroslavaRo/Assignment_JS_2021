@@ -10,38 +10,109 @@ var disableCards = false;
 let cards = document.querySelectorAll(' .deck .card');
 let hasFlipedCard = false;
 let firstCard, secondCard;
+let images = document.getElementsByClassName("face");
+let stratmenu = document.getElementById("popup0");
 
-function images() {
-            $(".face").attr("src", "imgs/dogs/" + this.dataset.framework + ".jpg");
-           
+var theme;
+var selected;
+let options = document.getElementsByClassName("option");
+function ChosenOption() {
+    this.classList.add("selected");
+    selected = this.id;
+    console.log(selected);
+    for (var i = 0; i < options.length; i++) {
+        option = options[i];
+        if (option.id !== selected) {
+            option.classList.remove("selected");
+        }
+    }
+}
+for (var i = 0; i < options.length; i++) {
+    options[i].addEventListener("click", ChosenOption);
+}
 
 
-function shuffle(array) {
-    var currentIndex = array.length;
-    var temporaryValue;
-    var randomIndex;
+document.body.onload = StartMenu();
+function StartMenu() {
+    $(deck).css({ "visibility": "hidden" });
+    stratmenu.classList.add("show");
+}
 
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+/*
+var CardFrameImg = new Object();
+var ArrayOfImages = [];
+var frames = [];
+for (var i = 0; i < cards.length; i++) {
+    card = cards[i];
+    frames[i] = card.dataset.framework;
+    CardFrameImg = { Card: cards[i], Framework: frames[i], Image: images[i].alt };
+    ArrayOfImages[i] = CardFrameImg;   
+}*/
+
+
+function Theme() {
+    if (selected === "dogs") {
+        theme = "dogs";
+    }
+    else if (selected === "cats") {
+        theme = "cats"
+    }
+    else {
+        theme = dinosaurs;
+    }
+    var Dogs = [];
+
+    var dogsAlts = [];
+    for (var i = 0; i < 8; i++) {
+        Dogs[i] = new Image();
+        Dogs[i].src = "imgs/dogs/img" + (i + 1) + ".jpg";
+        Dogs[i].alt = "img" + (i + 1);
+        dogsAlts[i] = Dogs[i].alt;
+    }
+    function shuffle(array) {
+        var currentIndex = array.length;
+        var temporaryValue;
+        var randomIndex;
+
+        while (currentIndex !== 0) {
+            randomIndex = Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
+            temporaryValue = array[currentIndex];
+            array[currentIndex] = array[randomIndex];
+            array[randomIndex] = temporaryValue;
+        }
+
+        return array;
+    };
+    var imgAlts = [];
+    for (var j = 0; j < 16; j++) {
+        imgAlts[j] = images[j].alt;
     }
 
-    return array;
-};
+
+    for (var i = 0; i < 16; i++) {
+        if (dogsAlts.includes(imgAlts[i])) {
+            let index = dogsAlts.indexOf(imgAlts[i]);
+            //console.log(index);
+            images[i].src = Dogs[index].src;
+        }
+    }
+}
 
 
-document.body.onload = startGame();
+
+// document.body.onload = startGame();
 
 
-// function to start a new play 
 function startGame() {
+    stratmenu.classList.remove("show");
 
+    $(deck).css({ "visibility": "visible" });
     firstCard = 0;
     secondCard = 0;
-   // cards = shuffle(cards);  // shuffle deck
+    Theme();
+
+    //cards = shuffle(frames);  // shuffle deck
 
     // remove all exisiting classes from each card
     for (var i = 0; i < cards.length; i++) {
@@ -69,8 +140,11 @@ function startGame() {
     clearInterval(interval);
 }
 
+
+
+
 function flipCard() {
-    images(this);
+
     this.classList.toggle("open");
     this.classList.toggle("show");
     this.classList.toggle("disabled");
@@ -218,7 +292,7 @@ function congratulations() {
 }
 
 
-// @description close icon on modal
+//close icon on modal
 function closeModal() {
     closeicon.addEventListener("click", function (e) {
         modal.classList.remove("show");
@@ -233,8 +307,9 @@ function playAgain() {
     startGame();
 }
 
-    for (var i = 0; i < cards.length; i++) {
-        card = cards[i];
+
+for (var i = 0; i < cards.length; i++) {
+    card = cards[i];
         card.addEventListener("click", flipCard);
         card.addEventListener("click", congratulations);
     }
