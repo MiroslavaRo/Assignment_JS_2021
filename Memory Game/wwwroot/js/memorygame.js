@@ -15,9 +15,10 @@ let stratmenu = document.getElementById("popup0");
 let name1 = document.getElementById("name1");
 let name2 = document.getElementById("name2");
 
-let playerScore = 0;
-
-
+let matchCounter = 0;
+let Score = document.getElementsByClassName("score");
+let playerScore1 = document.getElementById("score1");
+let playerScore2 = document.getElementById("score2");
 
 function GetPlayersName() {
     let player1 = document.getElementById("player1").value;
@@ -26,6 +27,45 @@ function GetPlayersName() {
     name2.innerHTML = player2;
 }
 
+let players = document.getElementsByClassName("player");
+let labels = document.getElementsByClassName("labelplayer");
+let radiobtns = document.getElementsByClassName("radiobutton");
+let chosen = 1;
+function Multiplayer() {
+    
+    document.getElementById("amount2").checked = false
+    document.getElementById("amount2").checked = false
+    document.getElementById("amount2").checked = false
+    document.getElementById("amount2").checked = false
+    
+    /*
+    thisRadio = $(this);
+    if (thisRadio.hasClass("imChecked")) {
+        thisRadio.removeClass("imChecked");
+        thisRadio.prop('checked', false);
+    } else {
+        thisRadio.prop('checked', true);
+        thisRadio.addClass("imChecked");
+        chosen = Number(this.value);
+        console.log(chosen);
+        for (var i = 0; i <4; i++) {
+            player = players[i];
+            label = labels[i];
+            console.log(label.name);
+            if (player.name == chosen) {
+                console.log(player.name);
+                player.classList.add("vis");
+                break;
+              //  label.classList.add("vis");
+            }
+        }*/
+    //.player vis, #label-player vis 
+
+}
+
+for (var i = 0; i < radiobtns.length; i++) {
+    radiobtns[i].addEventListener("click", Multiplayer);
+}
 
 document.body.onload = StartMenu();
 function StartMenu() {
@@ -76,6 +116,8 @@ function Theme() {
 
 
 function startGame() {
+    playerScore1.value = 0;
+    matchCounter = 0;
     GetPlayersName();
     stratmenu.classList.remove("show");
 
@@ -140,6 +182,7 @@ function flipCard() {
         secondCard = this;
         moveCounter();
         checkForMatch();
+        
     }
 }
 
@@ -155,7 +198,10 @@ function checkForMatch() {
 function matched() {
     firstCard.classList.add("match","disabled");
     secondCard.classList.add("match","disabled");
-    playerScore++;
+    matchCounter++;
+    console.log(matchCounter);
+    playerScore1.value = matchCounter;
+    console.log(playerScore1);
     AblePlayGround();
 }
 function unmatched() {
@@ -263,7 +309,7 @@ function congratulations() {
         modal.classList.add("show");
 
         // declare star rating variable
-       // var starRating = document.querySelector(".stars").innerHTML;
+      //  var starRating = document.querySelector(".stars").innerHTML;
 
         //showing move, rating, time on modal
         document.getElementById("finalMove").innerHTML = moves;

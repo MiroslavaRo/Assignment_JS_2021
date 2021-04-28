@@ -30,12 +30,33 @@
                     </div>
                 </div>
                 <br />
+                <div class="content-3">
+                    <p>Choose amount of players:</p>
+                    <form>
+                        <div class="radio">
+                            <input type="radio" class="radiobutton chosen" id="amount1" value="1">
+                            <label for="amount1">1 Player</label>
+                            <input type="radio" class="radiobutton" id="amount2" value="2">
+                            <label for="amount2">2 Players</label>
+                            <input type="radio" class="radiobutton" id="amount3" value="3">
+                            <label for="amount3">3 Players</label>
+                            <input type="radio" class="radiobutton" id="amount4" value="4">
+                            <label for="amount4">4 Players</label>
+                        </div>
+                    </form>
+                </div>
+                <br />
                 <div class="content-2">
-                    <label for="player1">Player 1:</label>
-                    <input type="text" id="player1" class="player" value="Player1" />
+                    <label class="labelplayer" name="1" for="player1">Player 1:</label>
+                    <input type="text"  name="1" id="player1" class="player" value="Player 1" />
                     <br /><br />
-                    <label for="player2">Player 2:</label>
-                    <input type="text" id="player2" class="player" name="player2" value="Player2" />
+                    <label class="labelplayer"  name="2" for="player2">Player 2:</label>
+                    <input type="text" name="2" id="player2" class="player" value="Player 2" />
+                    <label class="labelplayer" name="3" for="player3">Player 3:</label>
+                    <input type="text"  name="3"id="player3" class="player" value="Player 3" />
+                    <br /><br />
+                    <label class="labelplayer" name="4" for="player4">Player 4:</label>
+                    <input type="text" name="4" id="player4" class="player" value="Player 4" />
                 </div>
             </div>
             <button id="play" onclick="startGame(); GetPlayersName()">
@@ -68,12 +89,17 @@
             <div for="score1" id="name1" class="name turn">
                 Player 1
             </div>
-            <input type="text" class="score" id="score1" value="0" disabled />
+            <p>
+                Score:
+                <input type="text" class="score" id="score1" value="0" disabled />
+            </p>
             <div for="score2" id="name2" class="name ">
                 Player 2
             </div>
-            <input type="text" class="score" id="score2" value="0" disabled />
-
+            <p>
+                Score:
+                <input type="text" class="score" id="score2" value="0" disabled />
+            </p>
         </div>
 
         <section class="deck" id="card-deck">
