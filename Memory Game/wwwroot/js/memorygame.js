@@ -12,9 +12,15 @@ let hasFlipedCard = false;
 let firstCard, secondCard;
 let images = document.getElementsByClassName("face");
 let stratmenu = document.getElementById("popup0");
+let player1 = document.getElementById("player1").value;
+let player2 = document.getElementById("player2").value;
+console.log(player1, player2);
+//let name1 = document.getElementById("name1").innerHTML = player1;
+//let name2 = document.getElementById("name2").innerHTML = player2;
 
-var theme;
-var selected;
+
+
+var selected="cats";
 let options = document.getElementsByClassName("option");
 function ChosenOption() {
     this.classList.add("selected");
@@ -35,6 +41,7 @@ for (var i = 0; i < options.length; i++) {
 document.body.onload = StartMenu();
 function StartMenu() {
     $(deck).css({ "visibility": "hidden" });
+    $(".players").css({ "visibility": "hidden" });
     stratmenu.classList.add("show");
 }
 
@@ -51,54 +58,47 @@ for (var i = 0; i < cards.length; i++) {
 
 
 function Theme() {
-    if (selected === "dogs") {
-        theme = "dogs";
-    }
-    else if (selected === "cats") {
-        theme = "cats"
-    }
-    else {
-        theme = dinosaurs;
-    }
-    var Dogs = [];
+    var Theme = [];
 
-    var dogsAlts = [];
-    for (var i = 0; i < 8; i++) {
-        Dogs[i] = new Image();
-        Dogs[i].src = "imgs/dogs/img" + (i + 1) + ".jpg";
-        Dogs[i].alt = "img" + (i + 1);
-        dogsAlts[i] = Dogs[i].alt;
+    var ThemeAlts = [];
+    for (var i = 0; i < 10; i++) {
+        Theme[i] = new Image();
+        Theme[i].src = "imgs/" + selected+"/img" + (i + 1) + ".jpg";
+        Theme[i].alt = "img" + (i + 1);
+        ThemeAlts[i] = Theme[i].alt;
     }
-    function shuffle(array) {
-        var currentIndex = array.length;
-        var temporaryValue;
-        var randomIndex;
-
-        while (currentIndex !== 0) {
-            randomIndex = Math.floor(Math.random() * currentIndex);
-            currentIndex -= 1;
-            temporaryValue = array[currentIndex];
-            array[currentIndex] = array[randomIndex];
-            array[randomIndex] = temporaryValue;
-        }
-
-        return array;
-    };
     var imgAlts = [];
-    for (var j = 0; j < 16; j++) {
+    for (var j = 0; j < 20; j++) {
         imgAlts[j] = images[j].alt;
-    }
-
-
-    for (var i = 0; i < 16; i++) {
-        if (dogsAlts.includes(imgAlts[i])) {
-            let index = dogsAlts.indexOf(imgAlts[i]);
-            //console.log(index);
-            images[i].src = Dogs[index].src;
+        if (ThemeAlts.includes(imgAlts[j])) {
+            let index = ThemeAlts.indexOf(imgAlts[j]);
+            images[j].src = Theme[index].src;
         }
     }
 }
 
+
+(function shuffle() {
+    /*
+    var currentIndex = array.length;
+    var temporaryValue;
+    var randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;*/
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 20);
+        card.style.order = randomPos;
+        console.log(card.dataset.framework);
+    });
+})();
 
 
 // document.body.onload = startGame();
@@ -108,11 +108,10 @@ function startGame() {
     stratmenu.classList.remove("show");
 
     $(deck).css({ "visibility": "visible" });
+    $(".players").css({ "visibility": "visible" });
     firstCard = 0;
     secondCard = 0;
     Theme();
-
-    //cards = shuffle(frames);  // shuffle deck
 
     // remove all exisiting classes from each card
     for (var i = 0; i < cards.length; i++) {
@@ -232,14 +231,14 @@ function moveCounter() {
         startTimer();
     }
     // setting rates based on moves
-    if (moves > 8 && moves < 12) {
+    if (moves > 13 && moves < 17) {
         for (i = 0; i < 3; i++) {
             if (i > 1) {
                 stars[i].style.visibility = "collapse";
             }
         }
     }
-    else if (moves > 13) {
+    else if (moves > 17) {
         for (i = 0; i < 3; i++) {
             if (i > 0) {
                 stars[i].style.visibility = "collapse";
@@ -271,7 +270,7 @@ function startTimer() {
 
 //congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
-    if (matchedCard.length == 16) {
+    if (matchedCard.length == 20) {
         clearInterval(interval);
         finalTime = timer.innerHTML;
 

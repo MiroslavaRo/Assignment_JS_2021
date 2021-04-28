@@ -32,10 +32,10 @@
                 <br />
                 <div class="content-2">
                     <label for="player1">Player 1:</label>
-                    <input type="text" id="player1" name="player1" value="Player1" />
+                    <input type="text"id="player1" class="player"value="Player1" />
                     <br /><br />
                     <label for="player2">Player 2:</label>
-                    <input type="text" id="player2" name="player2" value="Player2" />
+                    <input type="text"id="player2" class="player" name="player2" value="Player2" />
                 </div>
             </div>
             <button id="play" onclick="startGame()">
@@ -61,9 +61,20 @@
                 <i class="fa fa-repeat"></i>
             </div>
         </section>
+
         <div class="players">
 
+            <div for="score1" id="name1" class="name turn">
+                Player 1
+            </div>
+            <input type="text" class="score" id="score1" value="0" disabled />
+            <div for="score2" id="name2" class="name ">
+                Player 2
+            </div>
+            <input type="text" class="score" id="score2" value="0" disabled />
+
         </div>
+
         <section class="deck" id="card-deck">
 
             <div class="card" data-framework="img1">
@@ -130,8 +141,27 @@
                 <img class="face" src="imgs/cats/img8.jpg" alt="img8" />
                 <img class="back" src="imgs/back.jpg" />
             </div>
+            <div class="card" data-framework="img9">
+                <img class="face" src="imgs/cats/img9.jpg" alt="img9" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img9">
+                <img class="face" src="imgs/cats/img9.jpg" alt="img9" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img10">
+                <img class="face" src="imgs/cats/img10.jpg" alt="img10" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
+            <div class="card" data-framework="img10">
+                <img class="face" src="imgs/cats/img10.jpg" alt="img10" />
+                <img class="back" src="imgs/back.jpg" />
+            </div>
 
         </section>
+
+
+
 
         <div id="popup1" class="overlay">
             <div class="popup">
