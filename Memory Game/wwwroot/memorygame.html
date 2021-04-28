@@ -32,26 +32,27 @@
                 <br />
                 <div class="content-2">
                     <label for="player1">Player 1:</label>
-                    <input type="text"id="player1" class="player"value="Player1" />
+                    <input type="text" id="player1" class="player" value="Player1" />
                     <br /><br />
                     <label for="player2">Player 2:</label>
-                    <input type="text"id="player2" class="player" name="player2" value="Player2" />
+                    <input type="text" id="player2" class="player" name="player2" value="Player2" />
                 </div>
             </div>
-            <button id="play" onclick="startGame()">
+            <button id="play" onclick="startGame(); GetPlayersName()">
                 Play
             </button>
         </div>
         <header>
             <h1>Memory Game</h1>
-        </header>
+        </header>      
         <section class="score-panel">
-            <ul class="stars">
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-                <li><i class="fa fa-star"></i></li>
-            </ul>
-
+            <!--
+    <ul class="stars">
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+        <li><i class="fa fa-star"></i></li>
+    </ul>
+         -->
             <span class="moves">0</span> Move(s)
 
             <div class="timer">
@@ -173,7 +174,17 @@
                 <div class="content-2">
                     <p>You made <span id=finalMove> </span> moves </p>
                     <p>in <span id=totalTime> </span> </p>
-                    <p>Rating:  <span id=starRating></span></p>
+                    <!-- <p>Rating:  <span id=starRating></span></p> -->
+                    <p>Change theme:</p>
+                </div>
+                <div class="dropdown">
+                    <button class="dropbtn">Themes</button>
+                    <div class="dropdown-content">
+                        <div class="option selected" id="cats">Cats</div>
+                        <div class="option" id="dogs">Dogs</div>
+                        <div class="option" id="dinosaurs">Dinosaurs</div>
+                    </div>
+                    <br /><br />
                 </div>
                 <button id="play-again" onclick="playAgain()">
                     Play again 😄

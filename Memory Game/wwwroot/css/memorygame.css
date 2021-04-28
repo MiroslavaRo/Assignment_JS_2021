@@ -248,7 +248,6 @@ h1 {
         display: inline-block;
         margin: 0 5px 0 0;
     }
-
         .score-panel .stars li {
             list-style: none;
             display: inline-block;
@@ -273,14 +272,14 @@ h1 {
 
 .name{
    font-size: 18px;
-    margin: 30px;
+    margin: 30px 0;
     display:inline;
 }
-#name2{
-    visibility:hidden;
+#name2, #score2 {
+    /* visibility:hidden;*/
 }
-#score2{
-    visibility:hidden;
+#name2{
+    margin: 0 0 0 30px;
 }
 .player, .score {
     width: 150px;
@@ -293,16 +292,19 @@ h1 {
     font-size: 16px;
     text-align: center;
 }
-
-
-.name.turn {
-    border: 2px solid #fee949;
-    border-radius: 7px;
-    padding: 15px;
-    -webkit-box-shadow: 0px 0px 10px #fee949;
-    -moz-box-shadow: 0px 0px 10px #fee949;
-    box-shadow: 0px 0px 10px #fee949;
+.score {
+    width: 70px;
 }
+
+
+    .name.turn {
+        border: 2px solid #fee949;
+        border-radius: 7px;
+        padding: 15px;
+        -webkit-box-shadow: 0px 0px 10px #fee949;
+        -moz-box-shadow: 0px 0px 10px #fee949;
+        box-shadow: 0px 0px 10px #fee949;
+    }
 
 
 
