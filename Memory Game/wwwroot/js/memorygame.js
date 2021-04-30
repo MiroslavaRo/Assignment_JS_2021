@@ -4,26 +4,26 @@ let closeicon = document.querySelector(".close");// close icon in modal
 let closemenu = document.getElementById("closemenu");
 let modal = document.getElementById("popup1")// declare modal
 const deck = document.getElementById("card-deck");// deck of all cards in game
-var disableCards = false;
 let cards = document.querySelectorAll(' .deck .card');
-let hasFlipedCard = false;
+let hasFlipedCard = false; //check if card opened
 let firstCard, secondCard;
 let images = document.getElementsByClassName("face");
 let stratmenu = document.getElementById("popup0");
-let Score = document.getElementsByClassName("score");
-let playerScore1 = document.getElementById("score1");
+let Score = document.getElementsByClassName("score"); //players' points 
+let playerScore1 = document.getElementById("score1");  //1 player points 
 
-var a = 1;
+var turn = 1; //index of curent player
 
-let names = document.getElementsByClassName("name");
+let names = document.getElementsByClassName("name"); //player names
 
-let formPlayers = [
+//player forms
+let formPlayers = [ 
     document.getElementById("1player"),
     document.getElementById("2player"),
     document.getElementById("3player"),
     document.getElementById("4player")];
 
-let nameScores = document.getElementsByClassName("name-score");
+let nameScores = document.getElementsByClassName("name-score"); //display player form
 
 
 function GetPlayersName() {
@@ -37,6 +37,7 @@ function GetPlayersName() {
     names[3].innerHTML = player4;
 }
 
+//player-points storage
 var PlayersPoints = [
     { Player: names[0], Points: Score[0].value },
     { Player: names[1], Points: Score[1].value },
@@ -48,8 +49,8 @@ let currentPlayer = PlayersPoints[0].Player;
 
 
 document.getElementById("content2").style.display = "inline";
-let radiobtns = document.getElementsByClassName("radiobutton");
-let chosen = 1;
+let radiobtns = document.getElementsByClassName("radiobutton"); 
+let chosen = 1; //amount of players
 radiobtns[0].checked = true;
 function Multiplayer() {
     for (var i = 0; i < radiobtns.length; i++) {
@@ -58,8 +59,9 @@ function Multiplayer() {
     this.checked = true;
     chosen = Number(this.value);
     console.log(chosen);
-    DisplayPlayers();
+    DisplayPlayers(); //display forms
 }
+
 function DisplayPlayers() {
     for (var i = 1; i < 4; i++) {
         formPlayers[i].classList.remove("vis");
@@ -72,13 +74,14 @@ function DisplayPlayers() {
         nameScores[j].style.display = "block";
     }
 }
+//display form when button clicked
 for (var i = 0; i < radiobtns.length; i++) {
     if (radiobtns[i].disabled === false) {
         radiobtns[i].addEventListener("click", Multiplayer);
     }
 }
 
-
+//closes menu, but DOSEN'T restart the game, ignoring new parameters (except names)
 function CloseMenu() {
     document.getElementById("closemenu").style.display = "block";
     closemenu.addEventListener("click", function (e) {
@@ -93,17 +96,21 @@ function CloseMenu() {
     });
 }
 
-document.body.onload = StartMenu(0);
+
+document.body.onload = StartMenu(0); 
 function StartMenu(index) {
-        $(deck).css({ "visibility": "hidden" });
-        $(".players").css({ "visibility": "hidden" });
-        stratmenu.classList.add("show");
+        $(deck).css({ "visibility": "hidden" }); //hide playground
+        $(".players").css({ "visibility": "hidden" }); //hide players' forms
+    stratmenu.classList.add("show"); //display start menu
+
+    //remove all markers to restart game
         if (index == 0) {
             for (var i = 0; i < cards.length; i++) {
-                cards[i].classList.remove("show", "open", "match", "disabled");
+                cards[i].classList.remove("show", "open", "match", "disabled"); 
             }
         }
-        else {
+    //hide all cards NOT to restart game
+        else { 
             for (var i = 0; i < cards.length; i++) {
                 cards[i].style.display = "none";
             }
@@ -117,7 +124,7 @@ function StartMenu(index) {
 
 
 
-var selected = "cats";
+var selected = "cats"; //selected playground images theme
 let options = document.getElementsByClassName("option");
 function ChosenOption() {
     this.classList.add("selected");
@@ -154,17 +161,25 @@ function Theme() {
         }
     }
 }
+//shuffle cards
+function shuffle(cards) {
+    cards.forEach(card => {
+        let randomPos = Math.floor(Math.random() * 20);
+        card.style.order = randomPos;
+        console.log(card.dataset.framework);
+    });
+};
+
 
 function startGame() {
     hasFlipedCard = false;
     document.getElementById("namescore1").style.display = "block";
-    playerScore1.value = 0;
-    PlayersPoints = [
-        { Player: names[0], Points: Score[0].value },
-        { Player: names[1], Points: Score[1].value },
-        { Player: names[2], Points: Score[2].value },
-        { Player: names[3], Points: Score[3].value }
-    ];
+    GetPlayersName();
+    stratmenu.classList.remove("show");
+
+
+    playerScore1.value = 0; //refresh points counter for 1 player mod 
+    //refresh points counter for multiplayer mode 
     for (var i = 0; i < PlayersPoints.length; i++) {
         PlayersPoints[i].Points = 0;
         Score[i].value = 0;
@@ -173,27 +188,18 @@ function startGame() {
 
     PlayersPoints[0].Player.classList.add("turn");
     currentPlayer = PlayersPoints[0].Player;
-    a = 1;
+    turn = 1;
 
+    
 
-    GetPlayersName();
-    stratmenu.classList.remove("show");
-
-    $(deck).css({ "visibility": "visible" });
-    $(".players").css({ "visibility": "visible" });
+    $(deck).css({ "visibility": "visible" }); //display playground 
+    $(".players").css({ "visibility": "visible" }); //display player forms in gsme
 
     firstCard = 0;
     secondCard = 0;
     Theme();
-    /*
-    (function shuffle() {
-        cards.forEach(card => {
-            let randomPos = Math.floor(Math.random() * 20);
-            card.style.order = randomPos;
-            console.log(card.dataset.framework);
-        });
-    })();
-    */
+    shuffle(cards);
+
     // remove all exisiting classes from each card
     for (var i = 0; i < cards.length; i++) {
         deck.innerHTML = "";
@@ -218,7 +224,7 @@ function startGame() {
 
 
 
-
+//check if card open and make it firstst or second card
 function flipCard() {
     this.classList.toggle("open");
     this.classList.toggle("show");
@@ -315,31 +321,27 @@ function enable() {
 
 
 
-
-
 //count player's moves
 function moveCounter() {
     moves++;
+    //after one move ==> next player's turn (until all cards will be opened)
     if (matchedCard.length !== 20) {
-        if (chosen == 4 && a == 4) {
+        if (chosen == 4 && turn == 4) {
             PlayersPoints[3].Player.classList.remove("turn");
-            a = 5;
+            turn = 5;
         }
 
-        if (a <= chosen) {
-            PlayersPoints[a - 1].Player.classList.remove("turn");
-            console.log("before change: " + PlayersPoints[a - 1].Player.innerHTML);
-            PlayersPoints[a].Player.classList.add("turn");
-            currentPlayer = PlayersPoints[a].Player;
-            console.log("after change: " + currentPlayer.innerHTML);
-            console.log(PlayersPoints[a].Player);
-            a++;
+        if (turn <= chosen) {
+            PlayersPoints[turn - 1].Player.classList.remove("turn");
+            PlayersPoints[turn].Player.classList.add("turn");
+            currentPlayer = PlayersPoints[turn].Player;
+            turn++;
         }
-        if (a > chosen) {
+        if (turn> chosen) {
             PlayersPoints[chosen - 1].Player.classList.remove("turn");
             PlayersPoints[0].Player.classList.add("turn")
             currentPlayer = PlayersPoints[0].Player;
-            a = 1;
+            turn = 1;
         }
     }
 
@@ -387,7 +389,7 @@ function congratulations() {
             b++
         }
 
-       clearInterval(interval);
+        clearInterval(interval);
         finalTime = timer.innerHTML;
 
         // show congratulations modal
@@ -395,22 +397,26 @@ function congratulations() {
        
       
         
-
+        document.getElementById("youwinner").classList.add("show");
         document.getElementById("totalTime").innerHTML = finalTime;
+        //1 player mode
         if (chosen == 1) {
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("playername").innerHTML = names[0].innerHTML + "!";
+
             document.getElementById("winner").style.display = "none";
 
             document.getElementById("congrats2").style.display = "none";
         }      
-        else {           
-
-           // document.getElementById("winner").style.display = "inline-flex";
+        //multiplayer mode
+        else {
+            document.getElementById("youwinner").classList.add("show");
             document.getElementById("loserscore").style.display = "inline-flex";
 
             document.getElementById("finalMove").style.display = "none";
             document.getElementById("movescount").style.display = "none";
+
+
             let SortedPlayersPoints = [];
             for (let i = 0; i < 4; i++) {
                 SortedPlayersPoints[i] = { Points: Score[i].value, Name: PlayersPoints[i].Player.innerHTML };
@@ -429,6 +435,7 @@ function congratulations() {
                 for (let i = 1; i < chosen; i++) {
                     if (SortedPlayersPoints[i].Points == SortedPlayersPoints[0].Points) {
                         Winners += ", " + SortedPlayersPoints[i].Name;
+                        document.getElementById("youwinner").innerHTML = "You're winners! 🎉🎉";
                     } else break;
                 }
                 Winners += "!";
@@ -441,10 +448,8 @@ function congratulations() {
             document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Name + ":";
             document.getElementById("loser1score").innerHTML = SortedPlayersPoints[1].Points;
             if (chosen == 2) {
-
-               
+                              
                 document.getElementById("loser2").style.display = "none";
-
                 document.getElementById("loser3").style.display = "none";
             }
             if (chosen == 3) {
@@ -455,18 +460,13 @@ function congratulations() {
             }
 
             if (chosen == 4) {
-           
-
-
                 document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Name + ":";
-            document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
+                document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
 
                 document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Name + ":";
-            document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;
+                document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;         
             }
         }
-
-
         closeModal();
     };
 }
