@@ -73,16 +73,17 @@ h1 {
             animation-name: rubberBand;
             animation-duration: .75s;
         }
-        
-     
+
+
         .deck .card.disabled {
             pointer-events: none;
             opacity: 0.9;
         }
-    .deck .card.disableplayground {
-        pointer-events: none;
-        cursor:default;
-    }
+
+        .deck .card.disableplayground {
+            pointer-events: none;
+            cursor: default;
+        }
 
 
 .face, .back {
@@ -150,7 +151,7 @@ h1 {
         color: #333;
     }
 
-        .popup .close:hover #closemenu :hover{
+        .popup .close:hover #closemenu :hover {
             color: #E5F720;
         }
 
@@ -161,23 +162,29 @@ h1 {
         text-align: center;
         font-weight: bold;
     }
+
 #popup1 .content-2 {
     font-weight: unset;
 }
-        .content-0 {
-            display: block;
-        }
- #closemenu {
+
+.content-0 {
+    display: block;
+}
+
+#closemenu {
     display: none;
 }
+
 .congrats {
     display: inline-flex;
     margin: 0;
 }
+
 #congrats2 {
     display: inline-flex;
     margin: 0;
 }
+
 #playername {
     margin: 0 20px;
 }
@@ -201,14 +208,15 @@ h1 {
     font-family: 'Gloria Hallelujah', cursive;
     color: #ffffff;
     border-radius: 5px;
-    cursor:pointer;
+    cursor: pointer;
 }
+
 #starRating li {
     display: inline-block;
 }
 
 .dropbtn {
-    width:200%;
+    width: 200%;
     background-color: #4CAF50;
     color: white;
     padding: 16px;
@@ -218,7 +226,7 @@ h1 {
 }
 
 .dropdown {
-    margin:0 45% 0 12%;
+    margin: 0 45% 0 12%;
     position: relative;
     display: inline-block;
 }
@@ -234,7 +242,7 @@ h1 {
 }
 
     .dropdown-content div {
-        cursor:pointer;
+        cursor: pointer;
         color: black;
         padding: 12px 16px;
         text-decoration: none;
@@ -244,10 +252,12 @@ h1 {
         .dropdown-content div:hover {
             background-color: #f1f1f1;
         }
+
         .dropdown-content div.selected {
             background-color: #483c3c;
-            color:#ffffff;
+            color: #ffffff;
         }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
@@ -263,9 +273,11 @@ h1 {
     text-align: center;
     margin-top: 10px;
 }
+
     .content-3 p {
         font-weight: bold;
     }
+
 .radio {
     margin-top: 10px;
     font-family: Arial;
@@ -274,10 +286,11 @@ h1 {
 .form {
     display: none;
 }
-.form.vis {
-    visibility: visible;
-    display: inline-flex;
-}
+
+    .form.vis {
+        visibility: visible;
+        display: inline-flex;
+    }
 
 
 
@@ -288,12 +301,14 @@ h1 {
 .score-panel {
     text-align: left;
     margin-bottom: 10px;
-    display:inline;
+    display: inline;
 }
+
     .score-panel .restart {
         float: right;
         cursor: pointer;
     }
+
     .score-panel .home {
         float: right;
         margin-right: 10px;
@@ -303,27 +318,31 @@ h1 {
 .fa-star {
     color: #FFD700;
 }*/
-.moves{
-    display:none;
+.moves {
+    display: none;
 }
+
 .timer {
     display: inline-block;
     margin: 0 1rem;
 }
 /*players*/
 
-.players{
-    display:flex;
+.players {
+    display: flex;
 }
+
 .name-score {
-    display:none;
+    display: none;
     margin: 0 5px
 }
-.name{
-   font-size: 18px;
+
+.name {
+    font-size: 18px;
     margin: 30px 0;
-    display:inline;
+    display: inline;
 }
+
 .player, .score {
     width: 150px;
     padding: 10px 20px;
@@ -334,6 +353,7 @@ h1 {
     font-size: 16px;
     text-align: center;
 }
+
 .score {
     width: 70px;
 }
@@ -354,7 +374,7 @@ h1 {
 
 #winner, #loser1, #loser2, #loser3 {
     display: inline-flex;
-    margin:0 10px;
+    margin: 0 10px;
 }
 
 
@@ -448,9 +468,11 @@ h1 {
     .popup {
         width: 60%;
     }
+
     .dropbtn {
         width: 220%;
     }
+
     .dropdown {
         margin: 0 45% 0 40%;
     }

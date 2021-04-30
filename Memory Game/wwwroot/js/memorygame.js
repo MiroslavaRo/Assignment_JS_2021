@@ -13,6 +13,7 @@ let stratmenu = document.getElementById("popup0");
 let Score = document.getElementsByClassName("score");
 let playerScore1 = document.getElementById("score1");
 
+var a = 1;
 
 let names = document.getElementsByClassName("name");
 
@@ -163,7 +164,10 @@ function startGame() {
         Score[i].value = 0;
         PlayersPoints[i].Player.classList.remove("turn");
     }
+
     PlayersPoints[0].Player.classList.add("turn");
+    currentPlayer = PlayersPoints[0].Player;
+    a = 1;
 
 
     GetPlayersName();
@@ -304,7 +308,7 @@ function enable() {
 
 
 
-var a = 1;
+
 //count player's moves
 function moveCounter() {
     moves++;
