@@ -415,8 +415,7 @@ function congratulations() {
             for (let i = 0; i < 4; i++) {
                 SortedPlayersPoints[i] = { Points: Score[i].value, Name: PlayersPoints[i].Player.innerHTML };
             }
-            SortedPlayersPoints = SortedPlayersPoints.sort(function (a, b) { return b.Points - a.Points });
-            console.log(SortedPlayersPoints);
+            SortedPlayersPoints = SortedPlayersPoints.sort(function (a, b) { return b.Points - a.Points });           
 
             if (SortedPlayersPoints[0].Points == SortedPlayersPoints[chosen - 1].Points) {  // if all equals
                 document.getElementById("congrats2").style.display = "inline-flex"; //if draw game
