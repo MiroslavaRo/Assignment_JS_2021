@@ -165,7 +165,6 @@ function shuffle(cards) {
     cards.forEach(card => {
         let randomPos = Math.floor(Math.random() * 20);
         card.style.order = randomPos;
-        console.log(card.dataset.framework);
     });
 };
 
