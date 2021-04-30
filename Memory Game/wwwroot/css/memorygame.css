@@ -6,7 +6,7 @@
 
 
 .container {
-    height: 110vh;
+    height: 100vh;
     background: #ffffff;
     font-family: 'Permanent Marker', cursive;
     font-size: 16px;
@@ -43,7 +43,7 @@ h1 {
     .deck .card {
         height: 3.7rem;
         width: 3.7rem;
-        margin: -1em 0.2rem 0.2rem;
+        margin: auto 0.2rem 0.2rem;
         position: relative;
         border-radius: 5px;
         cursor: pointer;
@@ -87,8 +87,8 @@ h1 {
 
 
 .face, .back {
-    width: 100%;
-    height: 130%;
+    width: 110%;
+    height: 100%;
     position: absolute;
     border-radius: 5px;
     background: #1c7ccc;
@@ -211,24 +211,29 @@ h1 {
     cursor: pointer;
 }
 
+#play {
+    margin: -60px auto;
+}
+
 #starRating li {
     display: inline-block;
 }
 
 .dropbtn {
-    width: 200%;
+    width: 100%;
     background-color: #4CAF50;
     color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 15px;
     border: none;
     cursor: pointer;
 }
 
 .dropdown {
-    margin: 0 45% 0 12%;
+    margin: 1%;
     position: relative;
     display: inline-block;
+    width: 100%;
 }
 
 .dropdown-content {
@@ -239,6 +244,7 @@ h1 {
     min-width: 160px;
     box-shadow: 0 0 36px 0 rgba(5, 0, 0, 0.6);
     z-index: 1;
+    width: 100%;
 }
 
     .dropdown-content div {
@@ -271,7 +277,6 @@ h1 {
     max-height: 30%;
     overflow: auto;
     text-align: center;
-    margin-top: 10px;
 }
 
     .content-3 p {
@@ -281,6 +286,7 @@ h1 {
 .radio {
     margin-top: 10px;
     font-family: Arial;
+    display: inline-flex;
 }
 
 .form {
@@ -290,6 +296,7 @@ h1 {
     .form.vis {
         visibility: visible;
         display: inline-flex;
+        margin: -15px 25px
     }
 
 
@@ -334,12 +341,12 @@ h1 {
 
 .name-score {
     display: none;
-    margin: 0 5px
+    margin: 0px 5px
 }
 
 .name {
-    font-size: 18px;
-    margin: 30px 0;
+    font-size: 13px;
+    margin: 5px;
     display: inline;
 }
 
@@ -453,6 +460,7 @@ h1 {
 @media (min-width: 768px) {
     .container {
         font-size: 22px;
+        height: 100vh;
     }
 
     .deck {
@@ -461,7 +469,7 @@ h1 {
     }
 
         .deck .card {
-            height: 100px;
+            height: 120px;
             width: 125px;
         }
 
@@ -469,11 +477,27 @@ h1 {
         width: 60%;
     }
 
-    .dropbtn {
-        width: 220%;
-    }
-
     .dropdown {
         margin: 0 45% 0 40%;
+    }
+
+    .face, .back {
+        width: 100%;
+        height: 120%;
+    }
+
+    .radio {
+        display: inline;
+    }
+
+    .dropbtn {
+        font-size: 22px;
+        margin: 1% -20%;
+        width: 60%;
+    }
+
+    .dropdown-content {
+        width: 60%;
+        margin: -1% -20%;
     }
 }
