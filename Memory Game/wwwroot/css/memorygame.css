@@ -322,10 +322,6 @@ h1 {
         margin-right: 10px;
         cursor: pointer;
     }
-/*
-.fa-star {
-    color: #FFD700;
-}*/
 .moves {
     display: none;
 }
@@ -334,6 +330,9 @@ h1 {
     display: inline-block;
     margin: 0 1rem;
 }
+
+
+
 /*players*/
 
 .players {

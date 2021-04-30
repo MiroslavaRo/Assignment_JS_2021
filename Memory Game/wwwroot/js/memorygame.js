@@ -123,7 +123,6 @@ function StartMenu(index) {
 }
 
 
-
 var selected = "cats"; //selected playground images theme
 let options = document.getElementsByClassName("option");
 function ChosenOption() {
@@ -141,7 +140,7 @@ for (var i = 0; i < options.length; i++) {
     options[i].addEventListener("click", ChosenOption);
 }
 
- 
+ //change playground images theme, based on user's choice 
 function Theme() {
     var Theme = [];
 
@@ -417,7 +416,7 @@ function congratulations() {
             document.getElementById("movescount").style.display = "none";
 
 
-            let SortedPlayersPoints = [];
+            let SortedPlayersPoints = [];//storage for sorted player-points array in descending order
             for (let i = 0; i < 4; i++) {
                 SortedPlayersPoints[i] = { Points: Score[i].value, Name: PlayersPoints[i].Player.innerHTML };
             }
@@ -425,13 +424,14 @@ function congratulations() {
             console.log(SortedPlayersPoints);
 
             if (SortedPlayersPoints[0].Points == SortedPlayersPoints[chosen - 1].Points) {  // if all equals
-                document.getElementById("congrats2").style.display = "inline-flex";
+                document.getElementById("congrats2").style.display = "inline-flex"; //if draw game
                 document.getElementById("congrats1").style.display = "none";
             }
             else {
                 document.getElementById("congrats2").style.display = "none";
                 document.getElementById("congrats1").style.display = "inline-flex";
-                let Winners = SortedPlayersPoints[0].Name;
+                let Winners = SortedPlayersPoints[0].Name; //player with biggest amount of points (first winner)
+                //if not 1 winner
                 for (let i = 1; i < chosen; i++) {
                     if (SortedPlayersPoints[i].Points == SortedPlayersPoints[0].Points) {
                         Winners += ", " + SortedPlayersPoints[i].Name;
@@ -441,14 +441,17 @@ function congratulations() {
                 Winners += "!";
                 document.getElementById("playername").innerHTML = Winners;
             }
+            //display all players and their points
 
             document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Name + ":";
             document.getElementById("firstscore").innerHTML = SortedPlayersPoints[0].Points;
 
             document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Name + ":";
             document.getElementById("loser1score").innerHTML = SortedPlayersPoints[1].Points;
+
+            //hide player-points form if chosen amount players< max possible amount
             if (chosen == 2) {
-                              
+                
                 document.getElementById("loser2").style.display = "none";
                 document.getElementById("loser3").style.display = "none";
             }
@@ -467,6 +470,7 @@ function congratulations() {
                 document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;         
             }
         }
+        //close modal window
         closeModal();
     };
 }
