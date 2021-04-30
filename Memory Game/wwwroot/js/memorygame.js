@@ -58,7 +58,6 @@ function Multiplayer() {
     }
     this.checked = true;
     chosen = Number(this.value);
-    console.log(chosen);
     DisplayPlayers(); //display forms
 }
 
@@ -259,15 +258,12 @@ function matched() {
         console.log(playerScore1.value);
     }
     else {
-        console.log(currentPlayer.innerHTML);
      
         for (var i = 0; i < PlayersPoints.length; i++) {
            
             if (currentPlayer.innerHTML == PlayersPoints[i].Player.innerHTML) {
-                console.log("points1:" + PlayersPoints[i].Points);
                 PlayersPoints[i].Points++;
                 Score[i].value++;
-                console.log("points2:" + PlayersPoints[i].Points);
             }
         }
     }
