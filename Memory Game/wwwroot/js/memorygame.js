@@ -419,10 +419,12 @@ function congratulations() {
             document.getElementById("finalMove").innerHTML = moves;
             document.getElementById("playername").innerHTML = names[0].innerHTML + "!";
             document.getElementById("winner").style.display = "none";
+
+            document.getElementById("congrats2").style.display = "none";
         }      
         else {           
 
-            document.getElementById("winner").style.display = "inline-flex";
+           // document.getElementById("winner").style.display = "inline-flex";
             document.getElementById("loserscore").style.display = "inline-flex";
 
             document.getElementById("finalMove").style.display = "none";
@@ -439,11 +441,10 @@ function congratulations() {
             }
 
 
-
-            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Player.innerHTML;
+            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Player.innerHTML+":";
             document.getElementById("firstscore").innerHTML = SortedPlayersPoints[0].Points;
 
-            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Player.innerHTML;
+            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Player.innerHTML + ":";
             document.getElementById("loser1score").innerHTML = SortedPlayersPoints[1].Points;
             if (chosen == 2) {
 
@@ -455,7 +456,7 @@ function congratulations() {
             if (chosen == 3) {
                 document.getElementById("loser3").style.display = "none";
 
-                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML;
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML + ":";
                 document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
             }
 
@@ -463,10 +464,10 @@ function congratulations() {
            
 
 
-                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML;
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML + ":";
             document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
 
-                document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Player.innerHTML;
+                document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Player.innerHTML + ":";
             document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;
             }
         }
