@@ -376,7 +376,7 @@ function startTimer() {
     }, 1000);
 }
 
-let SortedPlayersPoints = [];
+
 
 //congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
@@ -392,26 +392,8 @@ function congratulations() {
 
         // show congratulations modal
         modal.classList.add("show");
-        var points = [];
-        for (var i = 0; i < chosen; i++) {
-            points[i] = Score[i].value;
-        }
-        points = points.sort(function (a, b) { return b - a });
-        console.log(points);
-        SortedPlayersPoints = PlayersPoints.sort(function (a, b) { return b.Points - a.Points });
-        var d = 4;
-        while (d > chosen) {
-
-            SortedPlayersPoints.pop();
-            d--;
-        }
-        console.log(SortedPlayersPoints);
-
-        var equal = true;
-        for (let i = 0; i + 1 < chosen; i++) {
-            equal = (points[i] === points[i + 1]) || equal;
-        }
-        console.log(equal);
+       
+      
         
 
         document.getElementById("totalTime").innerHTML = finalTime;
@@ -429,22 +411,34 @@ function congratulations() {
 
             document.getElementById("finalMove").style.display = "none";
             document.getElementById("movescount").style.display = "none";
+            let SortedPlayersPoints = [];
+            for (let i = 0; i < 4; i++) {
+                SortedPlayersPoints[i] = { Points: Score[i].value, Name: PlayersPoints[i].Player.innerHTML };
+            }
+            SortedPlayersPoints = SortedPlayersPoints.sort(function (a, b) { return b.Points - a.Points });
+            console.log(SortedPlayersPoints);
 
-            if (equal) {
+            if (SortedPlayersPoints[0].Points == SortedPlayersPoints[chosen - 1].Points) {  // if all equals
                 document.getElementById("congrats2").style.display = "inline-flex";
                 document.getElementById("congrats1").style.display = "none";
             }
             else {
                 document.getElementById("congrats2").style.display = "none";
                 document.getElementById("congrats1").style.display = "inline-flex";
-                document.getElementById("playername").innerHTML = SortedPlayersPoints[0].Player.innerHTML + "!";
+                let Winners = SortedPlayersPoints[0].Name;
+                for (let i = 1; i < chosen; i++) {
+                    if (SortedPlayersPoints[i].Points == SortedPlayersPoints[0].Points) {
+                        Winners += ", " + SortedPlayersPoints[i].Name;
+                    } else break;
+                }
+                Winners += "!";
+                document.getElementById("playername").innerHTML = Winners;
             }
 
-
-            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Player.innerHTML+":";
+            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Name + ":";
             document.getElementById("firstscore").innerHTML = SortedPlayersPoints[0].Points;
 
-            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Player.innerHTML + ":";
+            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Name + ":";
             document.getElementById("loser1score").innerHTML = SortedPlayersPoints[1].Points;
             if (chosen == 2) {
 
@@ -456,7 +450,7 @@ function congratulations() {
             if (chosen == 3) {
                 document.getElementById("loser3").style.display = "none";
 
-                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML + ":";
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Name + ":";
                 document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
             }
 
@@ -464,10 +458,10 @@ function congratulations() {
            
 
 
-                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML + ":";
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Name + ":";
             document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
 
-                document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Player.innerHTML + ":";
+                document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Name + ":";
             document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;
             }
         }
