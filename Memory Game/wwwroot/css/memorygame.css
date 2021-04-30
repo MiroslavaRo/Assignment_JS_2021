@@ -471,6 +471,7 @@ h1 {
         .deck .card {
             height: 120px;
             width: 125px;
+            margin: auto
         }
 
     .popup {
@@ -499,5 +500,11 @@ h1 {
     .dropdown-content {
         width: 60%;
         margin: -1% -20%;
+    }
+
+    .name {
+        font-size: 20px;
+        margin: 5px;
+        display: inline;
     }
 }
