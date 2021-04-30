@@ -87,7 +87,7 @@ h1 {
 
 
 .face, .back {
-    width: 110%;
+    width: 100%;
     height: 100%;
     position: absolute;
     border-radius: 5px;
@@ -376,18 +376,19 @@ h1 {
 
 
 #loserscore, #winnerscore, #winner {
-    /*display: none;*/
+    display: none;
 }
 
 #winner, #loser1, #loser2, #loser3 {
-    display: inline-flex;
+    /* display: inline;*/
     margin: 0 10px;
 }
 
 
 
-
-
+#popup1{
+    display: none;
+}
 
 
 
@@ -460,16 +461,17 @@ h1 {
 @media (min-width: 768px) {
     .container {
         font-size: 22px;
-        height: 100vh;
+        height: 90vh;
     }
 
     .deck {
         width: 760px;
         height: 900px;
+        margin: auto
     }
 
         .deck .card {
-            height: 120px;
+            height: 110px;
             width: 125px;
             margin: auto
         }

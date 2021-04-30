@@ -159,6 +159,12 @@ function startGame() {
     hasFlipedCard = false;
     document.getElementById("namescore1").style.display = "block";
     playerScore1.value = 0;
+    PlayersPoints = [
+        { Player: names[0], Points: Score[0].value },
+        { Player: names[1], Points: Score[1].value },
+        { Player: names[2], Points: Score[2].value },
+        { Player: names[3], Points: Score[3].value }
+    ];
     for (var i = 0; i < PlayersPoints.length; i++) {
         PlayersPoints[i].Points = 0;
         Score[i].value = 0;
@@ -250,12 +256,14 @@ function matched() {
     }
     else {
         console.log(currentPlayer.innerHTML);
-        console.log(PlayersPoints[0].Points);
+     
         for (var i = 0; i < PlayersPoints.length; i++) {
+           
             if (currentPlayer.innerHTML == PlayersPoints[i].Player.innerHTML) {
+                console.log("points1:" + PlayersPoints[i].Points);
                 PlayersPoints[i].Points++;
                 Score[i].value++;
-                console.log(PlayersPoints[i].Points);
+                console.log("points2:" + PlayersPoints[i].Points);
             }
         }
     }
@@ -368,7 +376,7 @@ function startTimer() {
     }, 1000);
 }
 
-
+let SortedPlayersPoints = [];
 
 //congratulations when all cards match, show modal and moves, time and rating
 function congratulations() {
@@ -385,34 +393,25 @@ function congratulations() {
         // show congratulations modal
         modal.classList.add("show");
         var points = [];
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < chosen; i++) {
             points[i] = Score[i].value;
         }
         points = points.sort(function (a, b) { return b - a });
+        console.log(points);
+        SortedPlayersPoints = PlayersPoints.sort(function (a, b) { return b.Points - a.Points });
+        var d = 4;
+        while (d > chosen) {
 
-        let SortedPlayersPoints = [];
-
-        for (var b = 0; b < 4; b++) {
-            for (var j = 0; j < 4; j++) {
-                if (points[b] == PlayersPoints[j].Points) {
-                    SortedPlayersPoints[b] = { Points: PlayersPoints[j].Points, Name: PlayersPoints[j].Player.innerHTML };
-                    b++;
-
-                }
-            }
+            SortedPlayersPoints.pop();
+            d--;
         }
-            var equal = false;
-            var k = 0;
-            for (var a = 0; a < 4; a++) {
-                for (var b = 0; b < 4; b++) {
-                    if (points[a] === points[b]) {
-                        k++;
-                    }
-                }
-            }
-            if (k > 1) {
-                equal = true;
-            }
+        console.log(SortedPlayersPoints);
+
+        var equal = true;
+        for (let i = 0; i + 1 < chosen; i++) {
+            equal = (points[i] === points[i + 1]) || equal;
+        }
+        console.log(equal);
         
 
         document.getElementById("totalTime").innerHTML = finalTime;
@@ -423,7 +422,6 @@ function congratulations() {
         }      
         else {           
 
-          
             document.getElementById("winner").style.display = "inline-flex";
             document.getElementById("loserscore").style.display = "inline-flex";
 
@@ -437,15 +435,15 @@ function congratulations() {
             else {
                 document.getElementById("congrats2").style.display = "none";
                 document.getElementById("congrats1").style.display = "inline-flex";
-                document.getElementById("playername").innerHTML = SortedPlayersPoints[0].Name + "!";
+                document.getElementById("playername").innerHTML = SortedPlayersPoints[0].Player.innerHTML + "!";
             }
 
 
 
-            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Name;
+            document.getElementById("winnername").innerHTML = SortedPlayersPoints[0].Player.innerHTML;
             document.getElementById("firstscore").innerHTML = SortedPlayersPoints[0].Points;
 
-            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Name;
+            document.getElementById("loser1name").innerHTML = SortedPlayersPoints[1].Player.innerHTML;
             document.getElementById("loser1score").innerHTML = SortedPlayersPoints[1].Points;
             if (chosen == 2) {
 
@@ -457,7 +455,7 @@ function congratulations() {
             if (chosen == 3) {
                 document.getElementById("loser3").style.display = "none";
 
-                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Name;
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML;
                 document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
             }
 
@@ -465,10 +463,10 @@ function congratulations() {
            
 
 
-            document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Name;
+                document.getElementById("loser2name").innerHTML = SortedPlayersPoints[2].Player.innerHTML;
             document.getElementById("loser2score").innerHTML = SortedPlayersPoints[2].Points;
-           
-            document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Name;
+
+                document.getElementById("loser3name").innerHTML = SortedPlayersPoints[3].Player.innerHTML;
             document.getElementById("loser3score").innerHTML = SortedPlayersPoints[3].Points;
             }
         }
