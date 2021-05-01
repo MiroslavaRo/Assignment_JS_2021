@@ -75,7 +75,6 @@ h1 {
             pointer-events: none;
             opacity: 0.9;
         }
-
         .deck .card.disableplayground {
             pointer-events: none;
             cursor: default;
@@ -94,7 +93,7 @@ h1 {
 .face {
     transform: rotateY(180deg);
 }
-
+    
 
 
 

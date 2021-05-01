@@ -235,8 +235,11 @@ function flipCard() {
         disablePlayGround();
         hasFlipedCard = false;
         secondCard = this;
-        checkForMatch();
+        checkForMatch(firstCard);
         moveCounter();
+
+           
+        
         
     }
 }
@@ -244,18 +247,20 @@ function flipCard() {
 function checkForMatch() {
     if (firstCard.dataset.framework === secondCard.dataset.framework) {
         matched();
+
     }
     else {
         unmatched();
     }
+    
 }
 
 function matched() {
-    firstCard.classList.add("match","disabled");
+    firstCard.classList.add("match", "disabled");
     secondCard.classList.add("match", "disabled");
+    
     if (chosen === 1) {
         playerScore1.value++;
-        console.log(playerScore1.value);
     }
     else {
      
