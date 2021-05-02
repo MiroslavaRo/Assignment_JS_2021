@@ -235,11 +235,8 @@ function flipCard() {
         disablePlayGround();
         hasFlipedCard = false;
         secondCard = this;
-        checkForMatch(firstCard);
+        checkForMatch();
         moveCounter();
-
-           
-        
         
     }
 }
